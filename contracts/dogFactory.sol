@@ -44,7 +44,7 @@ contract DogFactory is Ownable {
         uint id = countId + _dna + block.timestamp;       
         dogToOwner[id] = msg.sender;
         ownerDogCount[msg.sender].add(1);
-        NewDoge(id, _name, _dna);
+        emit NewDoge(id, _name, _dna);
         countId.add(1);
     }
 

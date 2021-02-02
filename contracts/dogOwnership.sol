@@ -24,7 +24,7 @@ contract DogOwnership is DogeAttack, ERC721 {
     ownerDogCount[_to] = ownerDogCount[_to].add(1);
     ownerDogCount[msg.sender] = ownerDogCount[msg.sender].sub(1);
     dogToOwner[_tokenId] = _to;
-    Transfer(_from, _to, _tokenId);
+    emit Transfer(_from, _to, _tokenId);
   }
 
   function transfer(address _to, uint256 _tokenId) public override onlyOwnerOf(_tokenId) {
@@ -33,7 +33,7 @@ contract DogOwnership is DogeAttack, ERC721 {
 
   function approve(address _to, uint256 _tokenId) public override onlyOwnerOf(_tokenId) {
     dogApprovals[_tokenId] = _to;
-    Approval(msg.sender, _to, _tokenId);
+    emit Approval(msg.sender, _to, _tokenId);
   }
 
   function takeOwnership(uint256 _tokenId) public override {

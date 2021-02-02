@@ -29,7 +29,7 @@ contract DogHelper is DogFeeding {
       _i.transfer(address(this).balance);    
   }
 
-  function changeName(uint _dogId, string memory _newName) external aboveLevel(2, _dogId) onlyOwnerOf(_dogId) {
+  function changeName(uint _dogId, string calldata _newName) external aboveLevel(2, _dogId) onlyOwnerOf(_dogId) {
     dogs[_dogId].name = _newName;
   }
 
